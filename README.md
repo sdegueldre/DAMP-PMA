@@ -9,6 +9,7 @@ If your application needs write access to some file, use `sudo chown 33:33 <file
 The database credentials are configured in `docker-compose.yml`, by default they are:
 
     host: mariadb
+    database: wordpress
     user: wordpress
     password: password
 
