@@ -6,8 +6,15 @@ use `docker-compose up` to start the container, it will serve the files in the `
 
 If your application needs write access to some file, use `sudo chown 33:33 <file>`, or `sudo chown 33:33 <directory> -R` for directories. This will give ownership of the file/folder to the Apache process and let it read and write to it.
 
+The database credentials are configured in `docker-compose.yml`, by default they are:
+
+    host: mariadb
+    user: wordpress
+    password: password
+
 ### Wordpress
 - Paste the contents of your Wordpress folder inside the `DocumentRoot` folder
 - Inside the `DocumentRoot` folder, run `sudo chown 33:33 wp-content -R`. This will let you install themes, plugins and upload media content from the wordpress dashboard.
+- Configure wordpress access to the database using the credentials listed above
 - Don't forget to add `define( 'FS_METHOD',  'direct');` to your wp-config.php file to let wordpress install themes and plugins directly on the file system.
 - Start the container with `docker-compose up`
